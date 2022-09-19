@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CameraMove : MonoBehaviour
 {
-    [SerializeField]
     private Vector3 m_StartPos;
     [SerializeField]
     private Camera m_MainCamera;
 
     private void OnMouseDown()
     {
+        PlayerResourceManager.instance.GetTouchBackgound();
+
         m_StartPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, -10));
     }
 
