@@ -1,25 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerResourceManager : MonoBehaviour
+public class PlayerResourceManager
 {
-    public static PlayerResourceManager instance;
-    public static PlayerResourceManager Instance
+    public TouchManager Touch
     {
-        get
-        {
-            if (instance == null)
-            {
-                return null;
-            }
-            else
-            {
-                return instance;
-            }
-        }
+        get;
+        private set;
     }
-    public int Creation
+    public int CreatePower
     {
         get
         { return PlayerPrefs.GetInt("Creation", 0); }
@@ -27,29 +15,8 @@ public class PlayerResourceManager : MonoBehaviour
         { PlayerPrefs.SetInt("Creation", value); }
     }
 
-    public int m_TouchIncrease;
-
-    private void Awake()
+    public PlayerResourceManager()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-    }
-
-    private void Start()
-    {
-        SetTouchIncrease();
-    }
-
-    public void GetTouchBackgound()
-    {
-        Creation += m_TouchIncrease;
-
-        Debug.Log(Creation);
-    }
-    void SetTouchIncrease()
-    {
-        m_TouchIncrease = 1;
+        Touch = new TouchManager(this);
     }
 }
