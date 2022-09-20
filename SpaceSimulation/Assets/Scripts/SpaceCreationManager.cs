@@ -11,7 +11,7 @@ public class SpaceCreationManager : MonoBehaviour
     [HideInInspector]
     public int m_TotalCreatePower;
 
-    public BackGround m_BackGround;
+    public PlayerResourceManager m_Resource;
 
     public GameObject[] m_SpaceCreationsObj;
 
@@ -28,6 +28,16 @@ public class SpaceCreationManager : MonoBehaviour
                 case 0:
                     m_SpaceCreations[i] = new SpaceCreationTier0(m_Levels[i]);
                     break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
                 default:
                     break;
             }
@@ -38,8 +48,9 @@ public class SpaceCreationManager : MonoBehaviour
     {
         while (true)
         {
-            m_BackGround.Resource.CreatePower += m_TotalCreatePower;
-            Debug.Log(m_BackGround.Resource.CreatePower);
+            m_Resource.CreatePower += m_TotalCreatePower;
+            Debug.Log($"CreatePower: {m_Resource.CreatePower}");
+            Debug.Log($"DivinityPower: {m_Resource.DivinityPower}");
             yield return m_Sec;
         }
     }
@@ -62,7 +73,7 @@ public class SpaceCreationManager : MonoBehaviour
 
         m_TotalCreatePower = count;
 
-        m_BackGround.Resource.Touch.SetTouchIncrease(m_TotalCreatePower);
+        m_Resource.Touch.SetTouchCreatePowerIncrease(m_TotalCreatePower);
     }
     public void LevelUp(SpaceCreation _creation)
     {

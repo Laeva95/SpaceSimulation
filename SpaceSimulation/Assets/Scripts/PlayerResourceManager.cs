@@ -1,20 +1,16 @@
 using UnityEngine;
 
-public class PlayerResourceManager
+public class PlayerResourceManager : MonoBehaviour
 {
+    public SpaceBackGround m_SpaceBackGround;
+    public PlanetBackGround m_PlanetBackGround;
     public TouchManager Touch
     {
         get;
         private set;
     }
     public int CreatePower = 0;
-    //public int CreatePower
-    //{
-    //    get
-    //    { return PlayerPrefs.GetInt("Creation", 0); }
-    //    set
-    //    { PlayerPrefs.SetInt("Creation", value); }
-    //}
+    public int DivinityPower = 0;
 
     public PlayerResourceManager()
     {
