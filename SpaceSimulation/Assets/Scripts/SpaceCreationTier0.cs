@@ -14,7 +14,7 @@ public class SpaceCreationTier0 : SpaceCreation
     }
     public override void StatusUpdate()
     {
-        m_CreatPower = m_Level;
+        m_CreatPower = m_Level * 1;
         m_NextLevelCost = 10 * (m_Level + 1) * (m_Level + 1);
     }
 }

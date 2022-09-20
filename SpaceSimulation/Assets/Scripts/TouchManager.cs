@@ -24,4 +24,8 @@ public class TouchManager
 
         Debug.Log(Resource.CreatePower);
     }
+    public void SetTouchIncrease(int _increase)
+    {
+        TouchIncrease = 1 + _increase;
+    }
 }

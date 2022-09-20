@@ -8,13 +8,19 @@ public class SpaceCreationManager : MonoBehaviour
     public SpaceCreation[] m_SpaceCreations;
     [HideInInspector]
     public int[] m_Levels;
+    [HideInInspector]
+    public int m_TotalCreatePower;
+
+    public BackGround m_BackGround;
 
     public GameObject[] m_SpaceCreationsObj;
 
+    WaitForSeconds m_Sec = new WaitForSeconds(1f);
+
     private void Awake()
     {
-        m_SpaceCreations = new SpaceCreation[1];
-        m_Levels = new int[1];
+        m_SpaceCreations = new SpaceCreation[m_SpaceCreationsObj.Length];
+        m_Levels = new int[m_SpaceCreationsObj.Length];
         for (int i = 0; i < m_SpaceCreations.Length; i++)
         {
             switch (i)
@@ -26,6 +32,16 @@ public class SpaceCreationManager : MonoBehaviour
                     break;
             }
         }
+        StartCoroutine(CreatePowerPerSec());
+    }
+    IEnumerator CreatePowerPerSec()
+    {
+        while (true)
+        {
+            m_BackGround.Resource.CreatePower += m_TotalCreatePower;
+            Debug.Log(m_BackGround.Resource.CreatePower);
+            yield return m_Sec;
+        }
     }
 
     private void Update()
@@ -33,23 +49,33 @@ public class SpaceCreationManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             LevelUp(m_SpaceCreations[0]);
-            Debug.Log(m_SpaceCreations[0].m_Level);
-            Debug.Log(m_SpaceCreations[0].m_CreatPower);
-            Debug.Log(m_SpaceCreations[0].m_Name);
-            Debug.Log(m_SpaceCreations[0].m_NextLevelCost);
-            Debug.Log(m_SpaceCreations[0].m_Tier);
         }
     }
     public void StatusUpdate()
     {
+        int count = 0;
         for (int i = 0; i < m_SpaceCreations.Length; i++)
         {
             m_SpaceCreations[i].StatusUpdate();
+            count += m_SpaceCreations[i].m_CreatPower;
         }
+
+        m_TotalCreatePower = count;
+
+        m_BackGround.Resource.Touch.SetTouchIncrease(m_TotalCreatePower);
     }
     public void LevelUp(SpaceCreation _creation)
     {
+        m_SpaceCreationsObj[_creation.m_Tier].SetActive(true);
+
         _creation.m_Level++;
+        StatusUpdate();
+    }
+    public void LevelUp(SpaceCreation _creation, int _level)
+    {
+         m_SpaceCreationsObj[_creation.m_Tier].SetActive(true);
+
+        _creation.m_Level = _level;
         StatusUpdate();
     }
 }

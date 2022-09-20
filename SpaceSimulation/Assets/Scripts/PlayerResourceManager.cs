@@ -7,13 +7,14 @@ public class PlayerResourceManager
         get;
         private set;
     }
-    public int CreatePower
-    {
-        get
-        { return PlayerPrefs.GetInt("Creation", 0); }
-        set
-        { PlayerPrefs.SetInt("Creation", value); }
-    }
+    public int CreatePower = 0;
+    //public int CreatePower
+    //{
+    //    get
+    //    { return PlayerPrefs.GetInt("Creation", 0); }
+    //    set
+    //    { PlayerPrefs.SetInt("Creation", value); }
+    //}
 
     public PlayerResourceManager()
     {
