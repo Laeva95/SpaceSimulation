@@ -9,8 +9,8 @@ public class PlayerResourceManager : MonoBehaviour
         get;
         private set;
     }
-    public int CreatePower = 0;
-    public int DivinityPower = 0;
+    public ulong CreatePower = 0;
+    public ulong DivinityPower = 0;
 
     public PlayerResourceManager()
     {

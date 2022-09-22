@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class TouchManager
 {
-    public int TouchCreatePowerIncrease
+    public ulong TouchCreatePowerIncrease
     {
         get;
         private set;
     }
-    public int TouchDivinityPowerIncrease
+    public ulong TouchDivinityPowerIncrease
     {
         get;
         private set;
@@ -30,7 +30,7 @@ public class TouchManager
 
         Debug.Log(Resource.CreatePower);
     }
-    public void SetTouchCreatePowerIncrease(int _increase)
+    public void SetTouchCreatePowerIncrease(ulong _increase)
     {
         TouchCreatePowerIncrease = 1 + _increase;
     }
@@ -40,7 +40,7 @@ public class TouchManager
 
         Debug.Log(Resource.DivinityPower);
     }
-    public void SetTouchDivinityPowerIncrease(int _increase)
+    public void SetTouchDivinityPowerIncrease(ulong _increase)
     {
         TouchDivinityPowerIncrease = 1 + _increase;
     }

@@ -7,6 +7,7 @@ public class UIBtnManager : MonoBehaviour
 {
     public GameObject m_Space, m_Planet, m_SpaceUp, m_PlanetUp;
     public SpaceCreationManager m_SpaceCreationManager;
+    public PlanetCreationManager m_PlanetCreationManager;
     [SerializeField]
     private Text m_SpacePlanetSwitchText;
     [SerializeField]
@@ -26,6 +27,13 @@ public class UIBtnManager : MonoBehaviour
             {
                 m_SpaceCreationManager.m_SpaceCreationsObj[i].SetActive(false);
             }
+            for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreationsObj.Length; i++)
+            {
+                if (m_PlanetCreationManager.m_PlanetCreations[i].m_Level > 0)
+                {
+                    m_PlanetCreationManager.m_PlanetCreationsObj[i].SetActive(true);
+                }
+            }
         }
         else
         {
@@ -41,6 +49,10 @@ public class UIBtnManager : MonoBehaviour
                 {
                     m_SpaceCreationManager.m_SpaceCreationsObj[i].SetActive(true);
                 }
+            }
+            for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreationsObj.Length; i++)
+            {
+                m_PlanetCreationManager.m_PlanetCreationsObj[i].SetActive(false);
             }
         }
     }
