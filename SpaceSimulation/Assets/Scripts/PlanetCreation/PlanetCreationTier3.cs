@@ -14,7 +14,7 @@ public class PlanetCreationTier3 : PlanetCreation
     }
     public override void StatusUpdate()
     {
-        m_DivinityPower = (ulong)m_Level * 100;
-        m_NextLevelCost = (ulong)(1000000 * Mathf.Pow(m_Level + 1, 1.5f) * (int)(1 + 0.1f * (m_Level + 1)));
+        m_DivinityPower = (ulong)m_Level * 250;
+        m_NextLevelCost = (ulong)(10000 * Mathf.Pow(m_Level + 1, 1.25f) * (int)(1 + 0.1f * (m_Level + 1)));
     }
 }

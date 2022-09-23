@@ -55,20 +55,11 @@ public class SpaceCreationManager : MonoBehaviour
         while (true)
         {
             m_Resource.CreatePower += m_TotalCreatePower;
+            Debug.Log(m_Resource.CreatePower);
             yield return m_Sec;
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < m_SpaceCreations.Length; i++)
-            {
-                LevelUp(m_SpaceCreations[i]);         
-            }
-        }
-    }
     public void StatusUpdate()
     {
         ulong count = 0;

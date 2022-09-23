@@ -5,16 +5,16 @@ public class SpaceBackGround : MonoBehaviour
     public Vector3 m_StartPos;
     [SerializeField]
     private Camera m_MainCamera;
+    [SerializeField]
+    private TouchText m_TouchText;
 
     public PlayerResourceManager m_Resource;
 
-    private void Awake()
-    {
-    }
 
     private void OnMouseDown()
     {
         m_Resource.Touch.GetTouchSpaceBackgound();
+        m_TouchText.GetCPTextObj();
         m_StartPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, -10));
     }
 

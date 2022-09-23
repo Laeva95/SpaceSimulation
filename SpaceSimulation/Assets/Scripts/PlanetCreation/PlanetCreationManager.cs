@@ -59,16 +59,6 @@ public class PlanetCreationManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < m_PlanetCreations.Length; i++)
-            {
-                LevelUp(m_PlanetCreations[i]);
-            }
-        }
-    }
     public void StatusUpdate()
     {
         ulong count = 0;

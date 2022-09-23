@@ -27,21 +27,17 @@ public class TouchManager
     public void GetTouchSpaceBackgound()
     {
         Resource.CreatePower += TouchCreatePowerIncrease;
-
-        Debug.Log(Resource.CreatePower);
     }
     public void SetTouchCreatePowerIncrease(ulong _increase)
     {
-        TouchCreatePowerIncrease = 1 + _increase;
+        TouchCreatePowerIncrease = 1 + (ulong)(_increase * 0.1f);
     }
     public void GetTouchPlanetBackgound()
     {
         Resource.DivinityPower += TouchDivinityPowerIncrease;
-
-        Debug.Log(Resource.DivinityPower);
     }
     public void SetTouchDivinityPowerIncrease(ulong _increase)
     {
-        TouchDivinityPowerIncrease = 1 + _increase;
+        TouchDivinityPowerIncrease = 1 + (ulong)(_increase * 0.1f);
     }
 }

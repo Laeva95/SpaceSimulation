@@ -14,7 +14,7 @@ public class SpaceCreationTier5 : SpaceCreation
     }
     public override void StatusUpdate()
     {
-        m_CreatPower = (ulong)m_Level * 2500;
-        m_NextLevelCost = (ulong)(500000000 * Mathf.Pow(m_Level + 1, 1.5f) * (int)(1 + 0.04f * (m_Level + 1)));
+        m_CreatPower = (ulong)m_Level * 15000;
+        m_NextLevelCost = (ulong)(1000000 * Mathf.Pow(m_Level + 1, 1.25f) * (int)(1 + 0.04f * (m_Level + 1)));
     }
 }

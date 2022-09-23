@@ -16,4 +16,8 @@ public class PlayerResourceManager : MonoBehaviour
     {
         Touch = new TouchManager(this);
     }
+    private void Awake()
+    {
+        Application.targetFrameRate = 30;
+    }
 }
