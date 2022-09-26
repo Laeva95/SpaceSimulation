@@ -55,6 +55,7 @@ public class PlanetCreationManager : MonoBehaviour
         while (true)
         {
             m_Resource.DivinityPower += m_TotalDivinityPower;
+            m_Resource.UpdateText();
             yield return m_Sec;
         }
     }

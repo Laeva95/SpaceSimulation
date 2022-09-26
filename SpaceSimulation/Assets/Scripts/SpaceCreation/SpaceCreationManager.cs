@@ -55,7 +55,6 @@ public class SpaceCreationManager : MonoBehaviour
         while (true)
         {
             m_Resource.CreatePower += m_TotalCreatePower;
-            Debug.Log(m_Resource.CreatePower);
             yield return m_Sec;
         }
     }

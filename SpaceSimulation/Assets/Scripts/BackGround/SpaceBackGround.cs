@@ -28,7 +28,7 @@ public class SpaceBackGround : MonoBehaviour
             m_MainCamera.transform.position = Vector3.Lerp
                 (m_MainCamera.transform.position,
                 m_MainCamera.transform.position + (m_StartPos - dragPos),
-                0.05f);
+                0.2f);
         }
 
         CameraMoveLimitCheck();

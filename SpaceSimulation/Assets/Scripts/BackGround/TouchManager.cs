@@ -27,6 +27,7 @@ public class TouchManager
     public void GetTouchSpaceBackgound()
     {
         Resource.CreatePower += TouchCreatePowerIncrease;
+        Resource.UpdateText();
     }
     public void SetTouchCreatePowerIncrease(ulong _increase)
     {
@@ -35,6 +36,7 @@ public class TouchManager
     public void GetTouchPlanetBackgound()
     {
         Resource.DivinityPower += TouchDivinityPowerIncrease;
+        Resource.UpdateText();
     }
     public void SetTouchDivinityPowerIncrease(ulong _increase)
     {
