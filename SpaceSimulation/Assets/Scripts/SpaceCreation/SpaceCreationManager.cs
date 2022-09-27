@@ -44,6 +44,15 @@ public class SpaceCreationManager : MonoBehaviour
                 case 5:
                     m_SpaceCreations[i] = new SpaceCreationTier5(m_Levels[i], i);
                     break;
+                case 6:
+                    m_SpaceCreations[i] = new SpaceCreationTier6(m_Levels[i], i);
+                    break;
+                case 7:
+                    m_SpaceCreations[i] = new SpaceCreationTier7(m_Levels[i], i);
+                    break;
+                case 8:
+                    m_SpaceCreations[i] = new SpaceCreationTier8(m_Levels[i], i);
+                    break;
                 default:
                     break;
             }

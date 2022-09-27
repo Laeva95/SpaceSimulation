@@ -22,10 +22,12 @@ public class PlayerResourceManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
+        CreatePower = 1000000000000;
+        DivinityPower = 1000000000000;
     }
     public void UpdateText()
     {
-        m_TopText.text = $"CP: {CreatePower}({m_SpaceManager.m_TotalCreatePower}/s)\n" +
-            $"DP: {DivinityPower}({m_PlanetManager.m_TotalDivinityPower}/s)";
+        m_TopText.text = $"CP: {Utils.Caculation(CreatePower)}(+{Utils.Caculation(m_SpaceManager.m_TotalCreatePower)}/s)\n" +
+            $"DP: {Utils.Caculation(DivinityPower)}(+{Utils.Caculation(m_PlanetManager.m_TotalDivinityPower)}/s)";
     }
 }

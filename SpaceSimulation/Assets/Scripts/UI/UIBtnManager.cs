@@ -200,6 +200,45 @@ public class UIBtnManager : MonoBehaviour
             m_ErrorText1.SetActive(true);
         }
     }
+    public void SpaceUpBtn6()
+    {
+        if (m_SpaceCreationManager.m_SpaceCreations[6].m_NextLevelCost <= m_Resource.CreatePower)
+        {
+            m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[6].m_NextLevelCost;
+            m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[6]);
+            SetSpaceUpText();
+        }
+        else
+        {
+            m_ErrorText1.SetActive(true);
+        }
+    }
+    public void SpaceUpBtn7()
+    {
+        if (m_SpaceCreationManager.m_SpaceCreations[7].m_NextLevelCost <= m_Resource.CreatePower)
+        {
+            m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[7].m_NextLevelCost;
+            m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[7]);
+            SetSpaceUpText();
+        }
+        else
+        {
+            m_ErrorText1.SetActive(true);
+        }
+    }
+    public void SpaceUpBtn8()
+    {
+        if (m_SpaceCreationManager.m_SpaceCreations[8].m_NextLevelCost <= m_Resource.CreatePower)
+        {
+            m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[8].m_NextLevelCost;
+            m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[8]);
+            SetSpaceUpText();
+        }
+        else
+        {
+            m_ErrorText1.SetActive(true);
+        }
+    }
 
     [SerializeField]
     private Text[] m_PlanetDPText;
@@ -212,9 +251,9 @@ public class UIBtnManager : MonoBehaviour
     {
         for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreations.Length; i++)
         {
-            m_PlanetDPText[i].text = Utils.Caculation(m_PlanetCreationManager.m_PlanetCreations[i].m_DivinityPower) + " CP/s";
+            m_PlanetDPText[i].text = Utils.Caculation(m_PlanetCreationManager.m_PlanetCreations[i].m_DivinityPower) + " DP/s";
             m_PlanetLevelText[i].text = m_PlanetCreationManager.m_PlanetCreations[i].m_Level.ToString() + " Lv";
-            m_PlanetCostText[i].text = Utils.Caculation(m_PlanetCreationManager.m_PlanetCreations[i].m_NextLevelCost) + " CP";
+            m_PlanetCostText[i].text = Utils.Caculation(m_PlanetCreationManager.m_PlanetCreations[i].m_NextLevelCost) + " DP";
         }
         m_Resource.UpdateText();
     }
