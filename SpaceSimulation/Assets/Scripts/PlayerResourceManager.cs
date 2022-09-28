@@ -22,8 +22,8 @@ public class PlayerResourceManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        CreatePower = 1000000000000;
-        DivinityPower = 1000000000000;
+        CreatePower = 10000000000000;
+        DivinityPower = 10000000000000;
     }
     public void UpdateText()
     {
