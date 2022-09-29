@@ -23,6 +23,7 @@ public class UIBtnManager : MonoBehaviour
         SetSpaceUpText();
         SetPlanetUpText();
         m_Resource.UpdateText();
+        RebirthTextUpdate();
     }
     #region 메인 버튼 Set
     public void SpacePlanetSwitchBtn()
@@ -104,7 +105,7 @@ public class UIBtnManager : MonoBehaviour
         m_ShopSet.SetActive(true);
     }
     #endregion
-
+    #region Space 업그레이드 Set
     [SerializeField]
     private Text[] m_SpaceCPText;
     [SerializeField]
@@ -240,6 +241,8 @@ public class UIBtnManager : MonoBehaviour
         }
     }
 
+    #endregion
+    #region Planet 업그레이드 Set
     [SerializeField]
     private Text[] m_PlanetDPText;
     [SerializeField]
@@ -335,4 +338,21 @@ public class UIBtnManager : MonoBehaviour
             m_ErrorText1.SetActive(true);
         }
     }
+
+    #endregion
+    #region 환생 Set
+    [SerializeField] Text m_RebirthText;
+    public void RebirthTextUpdate()
+    {
+        m_RebirthText.text = "";
+    }
+    public void RebirthBtn()
+    {
+
+    }
+    public void RebirthADBtn()
+    {
+
+    }
+    #endregion
 }
