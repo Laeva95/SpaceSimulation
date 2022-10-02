@@ -10,7 +10,7 @@ public class PlanetError : MonoBehaviour
     }
     IEnumerator DestroySelf()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         gameObject.SetActive(false);
     }
 }

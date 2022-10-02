@@ -16,6 +16,8 @@ public class UIBtnManager : MonoBehaviour
     [SerializeField]
     private GameObject m_ErrorText1;
     [SerializeField]
+    private GameObject m_ErrorText2;
+    [SerializeField]
     private GameObject m_UpSet, m_RebirthSet, m_BattleSet, m_ShopSet;
 
     private void Start()
@@ -159,6 +161,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[1].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[0].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[1].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[1]);
             SetSpaceUpText();
@@ -172,6 +179,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[2].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[1].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[2].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[2]);
             SetSpaceUpText();
@@ -185,6 +197,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[3].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[2].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[3].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[3]);
             SetSpaceUpText();
@@ -198,6 +215,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[4].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[3].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[4].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[4]);
             SetSpaceUpText();
@@ -211,6 +233,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[5].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[4].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[5].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[5]);
             SetSpaceUpText();
@@ -224,6 +251,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[6].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[5].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[6].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[6]);
             SetSpaceUpText();
@@ -237,6 +269,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[7].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[6].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[7].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[7]);
             SetSpaceUpText();
@@ -250,6 +287,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_SpaceCreationManager.m_SpaceCreations[8].m_NextLevelCost <= m_Resource.CreatePower)
         {
+            if (m_SpaceCreationManager.m_SpaceCreations[7].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[8].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[8]);
             SetSpaceUpText();
@@ -296,6 +338,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_PlanetCreationManager.m_PlanetCreations[1].m_NextLevelCost <= m_Resource.DivinityPower)
         {
+            if (m_PlanetCreationManager.m_PlanetCreations[0].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.DivinityPower -= m_PlanetCreationManager.m_PlanetCreations[1].m_NextLevelCost;
             m_PlanetCreationManager.LevelUp(m_PlanetCreationManager.m_PlanetCreations[1]);
             SetPlanetUpText();
@@ -309,6 +356,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_PlanetCreationManager.m_PlanetCreations[2].m_NextLevelCost <= m_Resource.DivinityPower)
         {
+            if (m_PlanetCreationManager.m_PlanetCreations[1].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.DivinityPower -= m_PlanetCreationManager.m_PlanetCreations[2].m_NextLevelCost;
             m_PlanetCreationManager.LevelUp(m_PlanetCreationManager.m_PlanetCreations[2]);
             SetPlanetUpText();
@@ -322,6 +374,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_PlanetCreationManager.m_PlanetCreations[3].m_NextLevelCost <= m_Resource.DivinityPower)
         {
+            if (m_PlanetCreationManager.m_PlanetCreations[2].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.DivinityPower -= m_PlanetCreationManager.m_PlanetCreations[3].m_NextLevelCost;
             m_PlanetCreationManager.LevelUp(m_PlanetCreationManager.m_PlanetCreations[3]);
             SetPlanetUpText();
@@ -335,6 +392,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_PlanetCreationManager.m_PlanetCreations[4].m_NextLevelCost <= m_Resource.DivinityPower)
         {
+            if (m_PlanetCreationManager.m_PlanetCreations[3].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.DivinityPower -= m_PlanetCreationManager.m_PlanetCreations[4].m_NextLevelCost;
             m_PlanetCreationManager.LevelUp(m_PlanetCreationManager.m_PlanetCreations[4]);
             SetPlanetUpText();
@@ -348,6 +410,11 @@ public class UIBtnManager : MonoBehaviour
     {
         if (m_PlanetCreationManager.m_PlanetCreations[5].m_NextLevelCost <= m_Resource.DivinityPower)
         {
+            if (m_PlanetCreationManager.m_PlanetCreations[4].m_Level == 0)
+            {
+                m_ErrorText2.SetActive(true);
+                return;
+            }
             m_Resource.DivinityPower -= m_PlanetCreationManager.m_PlanetCreations[5].m_NextLevelCost;
             m_PlanetCreationManager.LevelUp(m_PlanetCreationManager.m_PlanetCreations[5]);
             SetPlanetUpText();
@@ -411,11 +478,7 @@ public class UIBtnManager : MonoBehaviour
         {
             if (m_PlanetCreationManager.m_PlanetCreations[i].m_Level > 0)
             {
-                count++;
-            }
-            else
-            {
-                break;
+                count = 1 + m_PlanetCreationManager.m_PlanetCreations[i].m_Tier;
             }
         }
         reward = _isRewardedAD ? (ulong)(Mathf.Pow(m_Resource.CreatePower, 0.2f) * count) * 2 : (ulong)(Mathf.Pow(m_Resource.CreatePower, 0.2f) * count);
