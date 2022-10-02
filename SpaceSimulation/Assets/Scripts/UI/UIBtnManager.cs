@@ -32,40 +32,39 @@ public class UIBtnManager : MonoBehaviour
         {
             if (m_Space.activeSelf)
             {
-                m_Space.SetActive(false);
-                m_SpaceUp.SetActive(false);
-                m_Planet.SetActive(true);
-                m_PlanetUp.SetActive(true);
-                m_SpacePlanetSwitchText.text = "Planet";
-
-                for (int i = 0; i < m_SpaceCreationManager.m_SpaceCreationsObj.Length; i++)
-                {
-                    m_SpaceCreationManager.m_SpaceCreationsObj[i].SetActive(false);
-                }
-                for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreationsObj.Length; i++)
-                {
-                    if (m_PlanetCreationManager.m_PlanetCreations[i].m_Level > 0)
-                    {
-                        m_PlanetCreationManager.m_PlanetCreationsObj[i].SetActive(true);
-                    }
-                }
+                Switch(m_Space.activeSelf);
             }
             else
             {
-                m_Space.SetActive(true);
-                m_SpaceUp.SetActive(true);
-                m_Planet.SetActive(false);
-                m_PlanetUp.SetActive(false);
-                m_SpacePlanetSwitchText.text = "Space";
+                Switch(m_Space.activeSelf);
+            }
+        }
+        else
+        {
+            m_ErrorText0.SetActive(true);
+        }
+    }
+    void Switch(bool _bool)
+    {
+        if (_bool)
+        {
+            m_Space.SetActive(false);
+            m_SpaceUp.SetActive(false);
+            m_Planet.SetActive(true);
+            m_PlanetUp.SetActive(true);
+            m_SpacePlanetSwitchText.text = "Planet";
 
-                for (int i = 0; i < m_SpaceCreationManager.m_SpaceCreationsObj.Length; i++)
+            for (int i = 0; i < m_SpaceCreationManager.m_SpaceCreationsObj.Length; i++)
+            {
+                m_SpaceCreationManager.m_SpaceCreationsObj[i].SetActive(false);
+            }
+            for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreationsObj.Length; i++)
+            {
+                if (m_PlanetCreationManager.m_PlanetCreations[i].m_Level > 0)
                 {
-                    if (m_SpaceCreationManager.m_SpaceCreations[i].m_Level > 0)
-                    {
-                        m_SpaceCreationManager.m_SpaceCreationsObj[i].SetActive(true);
-                    }
+                    m_PlanetCreationManager.m_PlanetCreationsObj[i].SetActive(true);
                 }
-                for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreationsObj.Length; i++)
+                else
                 {
                     m_PlanetCreationManager.m_PlanetCreationsObj[i].SetActive(false);
                 }
@@ -73,7 +72,27 @@ public class UIBtnManager : MonoBehaviour
         }
         else
         {
-            m_ErrorText0.SetActive(true);
+            m_Space.SetActive(true);
+            m_SpaceUp.SetActive(true);
+            m_Planet.SetActive(false);
+            m_PlanetUp.SetActive(false);
+            m_SpacePlanetSwitchText.text = "Space";
+
+            for (int i = 0; i < m_SpaceCreationManager.m_SpaceCreationsObj.Length; i++)
+            {
+                if (m_SpaceCreationManager.m_SpaceCreations[i].m_Level > 0)
+                {
+                    m_SpaceCreationManager.m_SpaceCreationsObj[i].SetActive(true);
+                }
+                else
+                {
+                    m_SpaceCreationManager.m_SpaceCreationsObj[i].SetActive(false);
+                }
+            }
+            for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreationsObj.Length; i++)
+            {
+                m_PlanetCreationManager.m_PlanetCreationsObj[i].SetActive(false);
+            }
         }
     }
     public void UpgradeSetBtn()
@@ -344,15 +363,65 @@ public class UIBtnManager : MonoBehaviour
     [SerializeField] Text m_RebirthText;
     public void RebirthTextUpdate()
     {
-        m_RebirthText.text = "";
+        m_RebirthText.text = "If Planet Level > 0 ? Get Reward Highest Planet Upgrade Tier * CreationPower^0.2";
     }
     public void RebirthBtn()
     {
-
+        if (m_SpaceCreationManager.m_SpaceCreations[4].m_Level > 0)
+        {
+            GetRevirthReward(false);
+            RevirthInit();
+            RebirthTextUpdate();
+        }
     }
     public void RebirthADBtn()
     {
+        if (m_SpaceCreationManager.m_SpaceCreations[4].m_Level > 0)
+        {
+            GetRevirthReward(true);
+            RevirthInit();
+            RebirthTextUpdate();
+        }
+    }
+    void RevirthInit()
+    {
+        m_Resource.CreatePower = 0;
+        m_Resource.DivinityPower = 0;
 
+        for (int i = 0; i < m_SpaceCreationManager.m_SpaceCreations.Length; i++)
+        {
+            m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[i], 0);
+        }
+
+        for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreations.Length; i++)
+        {
+            m_PlanetCreationManager.LevelUp(m_PlanetCreationManager.m_PlanetCreations[i], 0);
+        }
+
+        Switch(false);
+        SetPlanetUpText();
+        SetSpaceUpText();
+
+    }
+    void GetRevirthReward(bool _isRewardedAD)
+    {
+        ulong reward = 0;
+        int count = 1;
+        for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreations.Length; i++)
+        {
+            if (m_PlanetCreationManager.m_PlanetCreations[i].m_Level > 0)
+            {
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        reward = _isRewardedAD ? (ulong)(Mathf.Pow(m_Resource.CreatePower, 0.2f) * count) * 2 : (ulong)(Mathf.Pow(m_Resource.CreatePower, 0.2f) * count);
+        Debug.Log(reward);
+
+        m_Resource.RebirthPoint += reward;
     }
     #endregion
 }

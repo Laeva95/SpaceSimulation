@@ -95,7 +95,10 @@ public class SpaceCreationManager : MonoBehaviour
     {
         if (m_BackGroundObj.activeSelf)
         {
-            m_SpaceCreationsObj[_creation.m_Tier].SetActive(true);
+            if (_level > 0)
+            {
+                m_SpaceCreationsObj[_creation.m_Tier].SetActive(true);
+            }
         }
 
         _creation.m_Level = _level;

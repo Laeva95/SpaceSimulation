@@ -14,6 +14,7 @@ public class PlayerResourceManager : MonoBehaviour
     }
     public ulong CreatePower = 0;
     public ulong DivinityPower = 0;
+    public ulong RebirthPoint = 0;
 
     public PlayerResourceManager()
     {
