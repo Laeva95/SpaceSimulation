@@ -25,10 +25,12 @@ public class PlayerResourceManager : MonoBehaviour
         Application.targetFrameRate = 60;
         CreatePower = 10000000000000;
         DivinityPower = 10000000000000;
+        RebirthPoint = 1000;
     }
     public void UpdateText()
     {
         m_TopText.text = $"CP: {Utils.Caculation(CreatePower)}(+{Utils.Caculation(m_SpaceManager.m_TotalCreatePower)}/s)\n" +
-            $"DP: {Utils.Caculation(DivinityPower)}(+{Utils.Caculation(m_PlanetManager.m_TotalDivinityPower)}/s)";
+            $"DP: {Utils.Caculation(DivinityPower)}(+{Utils.Caculation(m_PlanetManager.m_TotalDivinityPower)}/s)\n" +
+            $"RP: {Utils.Caculation(RebirthPoint)}";
     }
 }
