@@ -11,7 +11,10 @@ public class SpaceCreationManager : MonoBehaviour
     [HideInInspector]
     public ulong m_TotalCreatePower;
 
-    public PlayerResourceManager m_Resource;
+    [SerializeField]
+    PlayerResourceManager m_Resource;
+    [SerializeField]
+    RelicManager m_Relic;
 
     public GameObject[] m_SpaceCreationsObj;
     public GameObject m_BackGroundObj;
@@ -63,7 +66,7 @@ public class SpaceCreationManager : MonoBehaviour
     {
         while (true)
         {
-            m_Resource.CreatePower += m_TotalCreatePower;
+            m_Resource.CreatePower += m_TotalCreatePower * (ulong)(1 + m_Relic.m_Relics[0].m_Level);
             yield return m_Sec;
         }
     }
@@ -79,7 +82,7 @@ public class SpaceCreationManager : MonoBehaviour
 
         m_TotalCreatePower = count;
 
-        m_Resource.Touch.SetTouchCreatePowerIncrease(m_TotalCreatePower);
+        m_Resource.Touch.SetTouchCreatePowerIncrease(m_TotalCreatePower * (ulong)(1 + m_Relic.m_Relics[2].m_Level));
     }
     public void LevelUp(SpaceCreation _creation)
     {

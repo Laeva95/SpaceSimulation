@@ -24,7 +24,7 @@ public class RelicManager : MonoBehaviour
     private void Awake()
     {
         m_RelicLevels = new int[m_Relics.Length];
-        m_RelicEffects = new int[] { 100, 100, 200, 200};
+        m_RelicEffects = new int[] { 100, 100, 50, 50};
         for (int i = 0; i < m_Relics.Length; i++)
         {
             m_RelicLevels[i] = 0;

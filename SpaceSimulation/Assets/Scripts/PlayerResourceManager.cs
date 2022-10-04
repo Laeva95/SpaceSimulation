@@ -6,6 +6,7 @@ public class PlayerResourceManager : MonoBehaviour
     public PlanetBackGround m_PlanetBackGround;
     public SpaceCreationManager m_SpaceManager;
     public PlanetCreationManager m_PlanetManager;
+    public RelicManager m_RelicManager;
     public UnityEngine.UI.Text m_TopText;
     public TouchManager Touch
     {
@@ -29,8 +30,8 @@ public class PlayerResourceManager : MonoBehaviour
     }
     public void UpdateText()
     {
-        m_TopText.text = $"CP: {Utils.Caculation(CreatePower)}(+{Utils.Caculation(m_SpaceManager.m_TotalCreatePower)}/s)\n" +
-            $"DP: {Utils.Caculation(DivinityPower)}(+{Utils.Caculation(m_PlanetManager.m_TotalDivinityPower)}/s)\n" +
+        m_TopText.text = $"CP: {Utils.Caculation(CreatePower)}(+{Utils.Caculation(m_SpaceManager.m_TotalCreatePower * (ulong)(1 + m_RelicManager.m_Relics[0].m_Level))}/s)\n" +
+            $"DP: {Utils.Caculation(DivinityPower)}(+{Utils.Caculation(m_PlanetManager.m_TotalDivinityPower * (ulong)(1 + m_RelicManager.m_Relics[1].m_Level))}/s)\n" +
             $"RP: {Utils.Caculation(RebirthPoint)}";
     }
 }

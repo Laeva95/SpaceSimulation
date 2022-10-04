@@ -11,7 +11,10 @@ public class PlanetCreationManager : MonoBehaviour
     [HideInInspector]
     public ulong m_TotalDivinityPower;
 
-    public PlayerResourceManager m_Resource;
+    [SerializeField]
+    PlayerResourceManager m_Resource;
+    [SerializeField]
+    RelicManager m_Relic;
 
     public GameObject[] m_PlanetCreationsObj;
     public GameObject m_BackGroundObj;
@@ -54,7 +57,7 @@ public class PlanetCreationManager : MonoBehaviour
     {
         while (true)
         {
-            m_Resource.DivinityPower += m_TotalDivinityPower;
+            m_Resource.DivinityPower += m_TotalDivinityPower * (ulong)(1 + m_Relic.m_Relics[1].m_Level);
             m_Resource.UpdateText();
             yield return m_Sec;
         }
@@ -71,7 +74,7 @@ public class PlanetCreationManager : MonoBehaviour
 
         m_TotalDivinityPower = count;
 
-        m_Resource.Touch.SetTouchDivinityPowerIncrease(m_TotalDivinityPower);
+        m_Resource.Touch.SetTouchDivinityPowerIncrease(m_TotalDivinityPower * (ulong)(1 + m_Relic.m_Relics[3].m_Level));
     }
     public void LevelUp(PlanetCreation _creation)
     {

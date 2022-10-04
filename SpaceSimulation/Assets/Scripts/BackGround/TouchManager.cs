@@ -31,7 +31,7 @@ public class TouchManager
     }
     public void SetTouchCreatePowerIncrease(ulong _increase)
     {
-        TouchCreatePowerIncrease = 1 + (ulong)(_increase * 0.1f);
+        TouchCreatePowerIncrease = 1 + (ulong)(_increase * 0.2f);
     }
     public void GetTouchPlanetBackgound()
     {
@@ -40,6 +40,6 @@ public class TouchManager
     }
     public void SetTouchDivinityPowerIncrease(ulong _increase)
     {
-        TouchDivinityPowerIncrease = 1 + (ulong)(_increase * 0.1f);
+        TouchDivinityPowerIncrease = 1 + (ulong)(_increase * 0.2f);
     }
 }

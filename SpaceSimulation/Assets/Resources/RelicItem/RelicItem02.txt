@@ -1,5 +1,5 @@
 {
     "name":"Relic02",
-    "descript":"CreationPower + {0}%",
+    "descript":"CP per Click + {0}%",
     "cost":100
 }
