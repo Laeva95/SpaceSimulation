@@ -440,6 +440,10 @@ public class UIBtnManager : MonoBehaviour
             RevirthInit();
             RebirthTextUpdate();
         }
+        else
+        {
+            m_ErrorText0.SetActive(true);
+        }
     }
     public void RebirthADBtn()
     {
@@ -448,6 +452,10 @@ public class UIBtnManager : MonoBehaviour
             GetRevirthReward(true);
             RevirthInit();
             RebirthTextUpdate();
+        }
+        else
+        {
+            m_ErrorText0.SetActive(true);
         }
     }
     void RevirthInit()

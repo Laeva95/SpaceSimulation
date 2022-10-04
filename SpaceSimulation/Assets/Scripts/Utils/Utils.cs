@@ -14,26 +14,25 @@ public static class Utils
     public const float _T = 0.000000000001f;
     public static string Caculation(ulong _ulong)
     {
-        if (_ulong < K)
-        {
-            return $"{_ulong}";
-        }
-        else if (_ulong < M)
-        {
-            return string.Format("{0:F1}K", (float)_ulong * _K);
-        }
-        else if (_ulong < B)
-        {
-            return string.Format("{0:F1}M", (float)_ulong * _M);
-        }
-        else if (_ulong < T)
-        {
-            return string.Format("{0:F1}B", (float)_ulong * _B);
-        }
-        else
+        if (_ulong >= T)
         {
             return string.Format("{0:F1}T", (float)_ulong * _T);
         }
-
+        else if (_ulong >= B)
+        {
+            return string.Format("{0:F1}B", (float)_ulong * _B);
+        }
+        else if (_ulong >= M)
+        {
+            return string.Format("{0:F1}M", (float)_ulong * _M);
+        }
+        else if (_ulong >= K)
+        {
+            return string.Format("{0:F1}K", (float)_ulong * _K);
+        }
+        else
+        {
+            return $"{_ulong}";
+        }
     }
 }

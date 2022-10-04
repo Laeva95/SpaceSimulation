@@ -1,0 +1,5 @@
+{
+    "name":"Relic03",
+    "descript":"CreationPower + {0}%",
+    "cost":200
+}

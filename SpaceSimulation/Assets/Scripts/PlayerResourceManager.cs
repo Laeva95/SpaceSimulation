@@ -25,7 +25,7 @@ public class PlayerResourceManager : MonoBehaviour
         Application.targetFrameRate = 60;
         CreatePower = 10000000000000;
         DivinityPower = 10000000000000;
-        RebirthPoint = 1000;
+        RebirthPoint = 10000;
     }
     public void UpdateText()
     {
