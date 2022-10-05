@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Text;
 
 public class PlayerResourceManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerResourceManager : MonoBehaviour
     public PlanetCreationManager m_PlanetManager;
     public RelicManager m_RelicManager;
     public UnityEngine.UI.Text m_TopText;
+    StringBuilder m_Sb = new StringBuilder();
     public TouchManager Touch
     {
         get;
@@ -24,14 +26,24 @@ public class PlayerResourceManager : MonoBehaviour
     private void Awake()
     {
         Application.targetFrameRate = 60;
-        CreatePower = 10000000000000;
-        DivinityPower = 10000000000000;
-        RebirthPoint = 10000;
     }
     public void UpdateText()
     {
-        m_TopText.text = $"CP: {Utils.Caculation(CreatePower)}(+{Utils.Caculation(m_SpaceManager.m_TotalCreatePower * (ulong)(1 + m_RelicManager.m_Relics[0].m_Level))}/s)\n" +
-            $"DP: {Utils.Caculation(DivinityPower)}(+{Utils.Caculation(m_PlanetManager.m_TotalDivinityPower * (ulong)(1 + m_RelicManager.m_Relics[1].m_Level))}/s)\n" +
-            $"RP: {Utils.Caculation(RebirthPoint)}";
+        m_Sb.Clear();
+        m_Sb.Append($"CP: {Utils.Caculation(CreatePower)}(+{Utils.Caculation(CPCal())}/s)\n");
+        m_Sb.Append($"DP: {Utils.Caculation(DivinityPower)}(+{Utils.Caculation(DPCal())}/s)\n");
+        m_Sb.Append($"RP: {Utils.Caculation(RebirthPoint)}");
+
+        m_TopText.text = m_Sb.ToString();
+    }
+    ulong CPCal()
+    {
+        return m_SpaceManager.m_TotalCreatePower 
+            * (ulong)(1 + m_RelicManager.m_Relics[0].m_Level + (m_RelicManager.m_Relics[4].m_Level * 2));
+    }
+    ulong DPCal()
+    {
+        return m_PlanetManager.m_TotalDivinityPower 
+            * (ulong)(1 + m_RelicManager.m_Relics[1].m_Level + (m_RelicManager.m_Relics[5].m_Level * 2));
     }
 }

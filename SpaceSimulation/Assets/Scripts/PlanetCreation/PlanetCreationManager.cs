@@ -25,6 +25,9 @@ public class PlanetCreationManager : MonoBehaviour
     {
         m_PlanetCreations = new PlanetCreation[m_PlanetCreationsObj.Length];
         m_Levels = new int[m_PlanetCreationsObj.Length];
+    }
+    private void Start()
+    {
         for (int i = 0; i < m_PlanetCreations.Length; i++)
         {
             switch (i)
@@ -51,13 +54,15 @@ public class PlanetCreationManager : MonoBehaviour
                     break;
             }
         }
+        StatusUpdate();
         StartCoroutine(DiviniryPowerPerSec());
     }
     IEnumerator DiviniryPowerPerSec()
     {
         while (true)
         {
-            m_Resource.DivinityPower += m_TotalDivinityPower * (ulong)(1 + m_Relic.m_Relics[1].m_Level);
+            m_Resource.DivinityPower += m_TotalDivinityPower 
+                * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2));
             m_Resource.UpdateText();
             yield return m_Sec;
         }
@@ -74,7 +79,8 @@ public class PlanetCreationManager : MonoBehaviour
 
         m_TotalDivinityPower = count;
 
-        m_Resource.Touch.SetTouchDivinityPowerIncrease(m_TotalDivinityPower * (ulong)(1 + m_Relic.m_Relics[3].m_Level));
+        m_Resource.Touch.SetTouchDivinityPowerIncrease(m_TotalDivinityPower 
+            * (ulong)(1 + m_Relic.m_Relics[3].m_Level));
     }
     public void LevelUp(PlanetCreation _creation)
     {

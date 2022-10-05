@@ -46,6 +46,7 @@ public class Relic : MonoBehaviour
         {
             m_Resource.RebirthPoint -= (ulong)m_Cost;
             m_Inven.RelicLevenUp(this);
+            SaveManager.Instance.SaveData();
         }
     }
 }

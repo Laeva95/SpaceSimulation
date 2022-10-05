@@ -143,6 +143,7 @@ public class UIBtnManager : MonoBehaviour
             m_SpaceCostText[i].text = Utils.Caculation(m_SpaceCreationManager.m_SpaceCreations[i].m_NextLevelCost) + " CP";
         }
         m_Resource.UpdateText();
+        SaveManager.Instance.SaveData();
     }
     public void SpaceUpBtn0()
     {
@@ -320,6 +321,7 @@ public class UIBtnManager : MonoBehaviour
             m_PlanetCostText[i].text = Utils.Caculation(m_PlanetCreationManager.m_PlanetCreations[i].m_NextLevelCost) + " DP";
         }
         m_Resource.UpdateText();
+        SaveManager.Instance.SaveData();
     }
     public void PlanetUpBtn0()
     {
@@ -439,6 +441,7 @@ public class UIBtnManager : MonoBehaviour
             GetRevirthReward(false);
             RevirthInit();
             RebirthTextUpdate();
+            SaveManager.Instance.SaveData();
         }
         else
         {
@@ -452,6 +455,7 @@ public class UIBtnManager : MonoBehaviour
             GetRevirthReward(true);
             RevirthInit();
             RebirthTextUpdate();
+            SaveManager.Instance.SaveData();
         }
         else
         {

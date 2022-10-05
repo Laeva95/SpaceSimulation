@@ -25,6 +25,9 @@ public class SpaceCreationManager : MonoBehaviour
     {
         m_SpaceCreations = new SpaceCreation[m_SpaceCreationsObj.Length];
         m_Levels = new int[m_SpaceCreationsObj.Length];
+    }
+    private void Start()
+    {
         for (int i = 0; i < m_SpaceCreations.Length; i++)
         {
             switch (i)
@@ -42,7 +45,7 @@ public class SpaceCreationManager : MonoBehaviour
                     m_SpaceCreations[i] = new SpaceCreationTier3(m_Levels[i], i);
                     break;
                 case 4:
-                    m_SpaceCreations[i] = new SpaceCreationTier4(m_Levels[i], i);
+                    m_SpaceCreations[i] = new SpaceCreationTier4(m_Levels[i], i); 
                     break;
                 case 5:
                     m_SpaceCreations[i] = new SpaceCreationTier5(m_Levels[i], i);
@@ -59,14 +62,20 @@ public class SpaceCreationManager : MonoBehaviour
                 default:
                     break;
             }
+            if (m_SpaceCreations[i].m_Level > 0)
+            {
+                m_SpaceCreationsObj[i].SetActive(true);
+            }
         }
+        StatusUpdate();
         StartCoroutine(CreatePowerPerSec());
     }
     IEnumerator CreatePowerPerSec()
     {
         while (true)
         {
-            m_Resource.CreatePower += m_TotalCreatePower * (ulong)(1 + m_Relic.m_Relics[0].m_Level);
+            m_Resource.CreatePower += m_TotalCreatePower 
+                * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2));
             yield return m_Sec;
         }
     }
@@ -82,7 +91,8 @@ public class SpaceCreationManager : MonoBehaviour
 
         m_TotalCreatePower = count;
 
-        m_Resource.Touch.SetTouchCreatePowerIncrease(m_TotalCreatePower * (ulong)(1 + m_Relic.m_Relics[2].m_Level));
+        m_Resource.Touch.SetTouchCreatePowerIncrease(m_TotalCreatePower 
+            * (ulong)(1 + m_Relic.m_Relics[2].m_Level));
     }
     public void LevelUp(SpaceCreation _creation)
     {

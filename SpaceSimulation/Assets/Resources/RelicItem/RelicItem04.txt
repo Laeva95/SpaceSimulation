@@ -1,0 +1,5 @@
+{
+    "name":"Relic04",
+    "descript":"CP per Sec + {0}%",
+    "cost":200
+}

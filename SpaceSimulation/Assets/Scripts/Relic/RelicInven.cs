@@ -17,12 +17,15 @@ public class RelicInven : MonoBehaviour
     [SerializeField]
     private Text m_RelicCountText;
 
-    private int m_RelicCount;
+    public int m_RelicCount;
     private int m_RelicCost;
     private bool m_Valid;
 
 
-
+    private void Start()
+    {
+        ValidCheck();
+    }
     public void GetRelic()
     {
         if (m_Resource.RebirthPoint >= (ulong)m_RelicCost)
@@ -60,7 +63,7 @@ public class RelicInven : MonoBehaviour
                 m_RelicCount++;
             }
         }
-        m_RelicCost = ((int)Mathf.Pow(2, m_RelicCount) * 100);
+        m_RelicCost = ((int)Mathf.Pow(2, m_RelicCount) * 50);
         m_GetRelicCostText.text = m_Valid ? m_RelicCost.ToString() + " RP" : "Max";
         m_RelicCountText.text = m_RelicCount.ToString() + " Relics";
         m_GetRelicBtn.interactable = m_Valid;
@@ -72,6 +75,7 @@ public class RelicInven : MonoBehaviour
             _relic.gameObject.SetActive(true);
         }
         _relic.m_Level++;
+
         m_RelicManager.UpdateText(_relic);
         m_Resource.UpdateText();
     }

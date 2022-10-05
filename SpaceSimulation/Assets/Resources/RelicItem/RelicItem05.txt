@@ -1,0 +1,5 @@
+{
+    "name":"Relic05",
+    "descript":"DP per Sec + {0}%",
+    "cost":200
+}

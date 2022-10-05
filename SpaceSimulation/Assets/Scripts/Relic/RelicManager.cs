@@ -24,11 +24,10 @@ public class RelicManager : MonoBehaviour
     private void Awake()
     {
         m_RelicLevels = new int[m_Relics.Length];
-        m_RelicEffects = new int[] { 100, 100, 50, 50};
-        for (int i = 0; i < m_Relics.Length; i++)
-        {
-            m_RelicLevels[i] = 0;
-        }
+        m_RelicEffects = new int[] { 100, 100, 100, 100, 200, 200};
+    }
+    private void Start()
+    {
         for (int i = 0; i < m_Relics.Length; i++)
         {
             m_Relics[i].m_Level = m_RelicLevels[i];
@@ -37,9 +36,7 @@ public class RelicManager : MonoBehaviour
             m_Info.Add(LoadStage(i));
             UpdateText(m_Relics[i]);
         }
-    }
-    private void Start()
-    {
+
         for (int i = 0; i < m_Relics.Length; i++)
         {
             m_RelicSets[i].SetActive(false);
@@ -61,6 +58,8 @@ public class RelicManager : MonoBehaviour
         _relic.SetLevel(_relic.m_Level);
         _relic.SetDescript(m_Info[_relic.m_Number].descript);
         _relic.SetCost(m_Info[_relic.m_Number].cost);
+
+        m_RelicLevels[_relic.m_Number] = _relic.m_Level;
     }
     public static Relicinfo LoadStage(int _number)
     {
