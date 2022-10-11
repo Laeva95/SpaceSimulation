@@ -19,13 +19,13 @@ public class UIBtnManager : MonoBehaviour
     private GameObject m_ErrorText2;
     [SerializeField]
     private GameObject m_UpSet, m_RebirthSet, m_BattleSet, m_ShopSet;
+    int count = 1;
 
     private void Start()
     {
         SetSpaceUpText();
         SetPlanetUpText();
         m_Resource.UpdateText();
-        RebirthTextUpdate();
     }
     #region 메인 버튼 Set
     public void SpacePlanetSwitchBtn()
@@ -432,7 +432,19 @@ public class UIBtnManager : MonoBehaviour
     [SerializeField] Text m_RebirthText;
     public void RebirthTextUpdate()
     {
-        m_RebirthText.text = "If Planet Level > 0 ? Get Reward Highest Planet Upgrade Tier * CreationPower^0.2";
+        for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreations.Length; i++)
+        {
+            if (m_PlanetCreationManager.m_PlanetCreations[i] != null)
+            {
+                if (m_PlanetCreationManager.m_PlanetCreations[i].m_Level > 0)
+                {
+                    count = 1 + m_PlanetCreationManager.m_PlanetCreations[i].m_Tier;
+                }
+            }
+        }
+
+        m_RebirthText.text =
+            $"You can rebirth if your planet is level 1 or higher. All Space and Planet upgrades are reset, but you can get {(ulong)(Mathf.Pow((Mathf.Pow(m_Resource.TotalCP, 0.2f)), 1 + (count * 0.4f)))} RP.";
     }
     public void RebirthBtn()
     {
@@ -485,18 +497,11 @@ public class UIBtnManager : MonoBehaviour
     void GetRevirthReward(bool _isRewardedAD)
     {
         ulong reward = 0;
-        int count = 1;
-        for (int i = 0; i < m_PlanetCreationManager.m_PlanetCreations.Length; i++)
-        {
-            if (m_PlanetCreationManager.m_PlanetCreations[i].m_Level > 0)
-            {
-                count = 1 + m_PlanetCreationManager.m_PlanetCreations[i].m_Tier;
-            }
-        }
-        reward = _isRewardedAD ? (ulong)(Mathf.Pow(m_Resource.CreatePower, 0.2f) * count) * 2 : (ulong)(Mathf.Pow(m_Resource.CreatePower, 0.2f) * count);
+        reward = _isRewardedAD ? (ulong)(Mathf.Pow((Mathf.Pow(m_Resource.TotalCP, 0.2f)), 1 + (count * 0.4f))) * 2 : (ulong)(Mathf.Pow((Mathf.Pow(m_Resource.TotalCP, 0.2f)), 1 + (count * 0.4f)));
         Debug.Log(reward);
 
         m_Resource.RebirthPoint += reward;
+        m_Resource.TotalCP = 0;
     }
     #endregion
 }

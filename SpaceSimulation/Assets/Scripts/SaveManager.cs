@@ -12,6 +12,7 @@ public class SaveData
     public ulong cp;
     public ulong dp;
     public ulong rp;
+    public ulong totalcp;
     public string dataTime;
     public List<int> SCLevels = new List<int>();
     public List<int> PCLevels = new List<int>();
@@ -99,6 +100,7 @@ public class SaveManager : MonoBehaviour
         saveData.cp = m_Resource.CreatePower;
         saveData.dp = m_Resource.DivinityPower;
         saveData.rp = m_Resource.RebirthPoint;
+        saveData.totalcp = m_Resource.TotalCP;
         for (int i = 0; i < m_Space.m_SpaceCreations.Length; i++)
         {
             saveData.SCLevels.Add(m_Space.m_SpaceCreations[i].m_Level);
@@ -134,6 +136,7 @@ public class SaveManager : MonoBehaviour
             m_Resource.CreatePower = loadData.cp;
             m_Resource.DivinityPower = loadData.dp;
             m_Resource.RebirthPoint = loadData.rp;
+            m_Resource.TotalCP = loadData.totalcp;
             for (int i = 0; i < m_Space.m_SpaceCreations.Length; i++)
             {
                 if (loadData.SCLevels[i] != 0)

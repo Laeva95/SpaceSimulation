@@ -33,7 +33,7 @@ public class RelicManager : MonoBehaviour
             m_Relics[i].m_Level = m_RelicLevels[i];
             m_Relics[i].m_Effect = m_RelicEffects[i];
             m_Relics[i].m_Number = i;
-            m_Info.Add(LoadStage(i));
+            m_Info.Add(LoadRelic(i));
             UpdateText(m_Relics[i]);
         }
 
@@ -61,7 +61,7 @@ public class RelicManager : MonoBehaviour
 
         m_RelicLevels[_relic.m_Number] = _relic.m_Level;
     }
-    public static Relicinfo LoadStage(int _number)
+    public static Relicinfo LoadRelic(int _number)
     {
         //1. 리소스 파일에서 텍스트를 읽어온다.
         TextAsset textAsset = Resources.Load<TextAsset>($"RelicItem/{GetFileName(_number)}");

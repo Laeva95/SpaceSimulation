@@ -76,6 +76,8 @@ public class SpaceCreationManager : MonoBehaviour
         {
             m_Resource.CreatePower += m_TotalCreatePower 
                 * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2));
+            m_Resource.TotalCP += m_TotalCreatePower
+                * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2));
             yield return m_Sec;
         }
     }

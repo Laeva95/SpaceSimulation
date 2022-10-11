@@ -27,6 +27,7 @@ public class TouchManager
     public void GetTouchSpaceBackgound()
     {
         Resource.CreatePower += TouchCreatePowerIncrease;
+        Resource.TotalCP += TouchCreatePowerIncrease;
         Resource.UpdateText();
     }
     public void SetTouchCreatePowerIncrease(ulong _increase)
