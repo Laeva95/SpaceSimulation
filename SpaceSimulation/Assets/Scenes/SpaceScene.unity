@@ -4443,7 +4443,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 185443005}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258789157}
+        m_TargetAssemblyTypeName: ShopUpgrade, Assembly-CSharp
+        m_MethodName: CPAD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &185443005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18426,7 +18438,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 910627057}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258789157}
+        m_TargetAssemblyTypeName: ShopUpgrade, Assembly-CSharp
+        m_MethodName: DPAD
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &910627057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20704,6 +20728,7 @@ MonoBehaviour:
   m_Space: {fileID: 1553282285}
   m_Planet: {fileID: 2113777924}
   m_Relic: {fileID: 1858736369}
+  m_Shop: {fileID: 258789157}
   m_OfflineRewardText: {fileID: 1647158308}
   m_OfflineRewardSet: {fileID: 318033712}
   m_LastDateTime: 0
@@ -29007,7 +29032,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1534289589}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258789157}
+        m_TargetAssemblyTypeName: ShopUpgrade, Assembly-CSharp
+        m_MethodName: UpgradeBtn1
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1534289589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29116,6 +29153,7 @@ MonoBehaviour:
   m_TotalCreatePower: 0
   m_Resource: {fileID: 1227265433}
   m_Relic: {fileID: 1858736369}
+  m_Shop: {fileID: 258789157}
   m_SpaceCreationsObj:
   - {fileID: 101275393}
   - {fileID: 1000618917}
@@ -29832,7 +29870,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1612740948}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258789157}
+        m_TargetAssemblyTypeName: ShopUpgrade, Assembly-CSharp
+        m_MethodName: UpgradeBtn2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1612740948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31973,7 +32023,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1705930020}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258789157}
+        m_TargetAssemblyTypeName: ShopUpgrade, Assembly-CSharp
+        m_MethodName: UpgradeBtn3
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1705930020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39477,7 +39539,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2066652764}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 258789157}
+        m_TargetAssemblyTypeName: ShopUpgrade, Assembly-CSharp
+        m_MethodName: UpgradeBtn0
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2066652764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40155,6 +40229,7 @@ MonoBehaviour:
   m_TotalDivinityPower: 0
   m_Resource: {fileID: 1227265433}
   m_Relic: {fileID: 1858736369}
+  m_Shop: {fileID: 258789157}
   m_PlanetCreationsObj:
   - {fileID: 1836208853}
   - {fileID: 1550115935}

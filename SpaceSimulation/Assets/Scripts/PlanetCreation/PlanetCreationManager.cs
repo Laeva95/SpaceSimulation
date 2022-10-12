@@ -15,6 +15,8 @@ public class PlanetCreationManager : MonoBehaviour
     PlayerResourceManager m_Resource;
     [SerializeField]
     RelicManager m_Relic;
+    [SerializeField]
+    ShopUpgrade m_Shop;
 
     public GameObject[] m_PlanetCreationsObj;
     public GameObject m_BackGroundObj;
@@ -62,7 +64,8 @@ public class PlanetCreationManager : MonoBehaviour
         while (true)
         {
             m_Resource.DivinityPower += m_TotalDivinityPower 
-                * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2));
+                * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2))
+                * (ulong)(1 + m_Shop.m_ShopLevel[1]);
             m_Resource.UpdateText();
             yield return m_Sec;
         }
@@ -80,7 +83,8 @@ public class PlanetCreationManager : MonoBehaviour
         m_TotalDivinityPower = count;
 
         m_Resource.Touch.SetTouchDivinityPowerIncrease(m_TotalDivinityPower 
-            * (ulong)(1 + m_Relic.m_Relics[3].m_Level));
+            * (ulong)(1 + m_Relic.m_Relics[3].m_Level)
+            * (ulong)(1 + m_Shop.m_ShopLevel[3]));
     }
     public void LevelUp(PlanetCreation _creation)
     {

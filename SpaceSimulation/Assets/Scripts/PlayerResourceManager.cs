@@ -43,12 +43,14 @@ public class PlayerResourceManager : MonoBehaviour
     ulong CPCal()
     {
         return m_SpaceManager.m_TotalCreatePower 
-            * (ulong)(1 + m_RelicManager.m_Relics[0].m_Level + (m_RelicManager.m_Relics[4].m_Level * 2));
+            * (ulong)(1 + m_RelicManager.m_Relics[0].m_Level + (m_RelicManager.m_Relics[4].m_Level * 2))
+            * (ulong)(1 + m_Shop.m_ShopLevel[0]);
     }
     ulong DPCal()
     {
         return m_PlanetManager.m_TotalDivinityPower 
-            * (ulong)(1 + m_RelicManager.m_Relics[1].m_Level + (m_RelicManager.m_Relics[5].m_Level * 2));
+            * (ulong)(1 + m_RelicManager.m_Relics[1].m_Level + (m_RelicManager.m_Relics[5].m_Level * 2))
+            * (ulong)(1 + m_Shop.m_ShopLevel[1]);
     }
 
     #region 해상도 조절

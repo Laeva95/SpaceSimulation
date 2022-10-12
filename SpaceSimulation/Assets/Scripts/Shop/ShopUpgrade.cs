@@ -29,7 +29,7 @@ public class ShopUpgrade : MonoBehaviour
     }
     private void Start()
     {
-
+        UpdateText();
     }
 
     public void UpdateText()
@@ -40,7 +40,7 @@ public class ShopUpgrade : MonoBehaviour
             $"{Utils.Caculation(m_Planet.m_TotalDivinityPower * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2)) * 1800)} DP as a reward";
         for (int i = 0; i < m_ShopLevel.Length; i++)
         {
-            m_CostText[i].text = $"{ (1 + m_ShopLevel[i]) * 10} RP";
+            m_CostText[i].text = $"{ Utils.Caculation((ulong)(1 + m_ShopLevel[i]) * 10)} RP";
             m_LevelText[i].text = $"{m_ShopLevel[i]} Lv";
             m_DescriptText[i].text = string.Format(DecriptText(i), m_ShopLevel[i] * m_ShopEffects[i]);
         }
@@ -76,18 +76,40 @@ public class ShopUpgrade : MonoBehaviour
     }
     public void UpgradeBtn0()
     {
-
+        if (m_Resource.RebirthPoint > (ulong)((1 + m_ShopLevel[0]) * 10))
+        {
+            m_Resource.RebirthPoint -= (ulong)((1 + m_ShopLevel[0]) * 10);
+            ShopUpgradeBtn(0);
+        }
     }
     public void UpgradeBtn1()
     {
-
+        if (m_Resource.RebirthPoint > (ulong)((1 + m_ShopLevel[1]) * 10))
+        {
+            m_Resource.RebirthPoint -= (ulong)((1 + m_ShopLevel[1]) * 10);
+            ShopUpgradeBtn(1);
+        }
     }
     public void UpgradeBtn2()
     {
-
+        if (m_Resource.RebirthPoint > (ulong)((1 + m_ShopLevel[2]) * 10))
+        {
+            m_Resource.RebirthPoint -= (ulong)((1 + m_ShopLevel[2]) * 10);
+            ShopUpgradeBtn(2);
+        }
     }
     public void UpgradeBtn3()
     {
-
+        if (m_Resource.RebirthPoint > (ulong)((1 + m_ShopLevel[3]) * 10))
+        {
+            m_Resource.RebirthPoint -= (ulong)((1 + m_ShopLevel[3]) * 10);
+            ShopUpgradeBtn(3);
+        }
+    }
+    void ShopUpgradeBtn(int num)
+    {
+        m_ShopLevel[num] = m_ShopLevel[num] + 1;
+        UpdateText();
+        m_Resource.UpdateText();
     }
 }

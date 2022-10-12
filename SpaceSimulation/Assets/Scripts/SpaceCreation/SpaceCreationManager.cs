@@ -15,6 +15,8 @@ public class SpaceCreationManager : MonoBehaviour
     PlayerResourceManager m_Resource;
     [SerializeField]
     RelicManager m_Relic;
+    [SerializeField]
+    ShopUpgrade m_Shop;
 
     public GameObject[] m_SpaceCreationsObj;
     public GameObject m_BackGroundObj;
@@ -75,9 +77,11 @@ public class SpaceCreationManager : MonoBehaviour
         while (true)
         {
             m_Resource.CreatePower += m_TotalCreatePower 
-                * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2));
+                * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2))
+                * (ulong)(1 + m_Shop.m_ShopLevel[0]);
             m_Resource.TotalCP += m_TotalCreatePower
-                * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2));
+                * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2))
+                * (ulong)(1 + m_Shop.m_ShopLevel[0]);
             yield return m_Sec;
         }
     }
@@ -94,7 +98,8 @@ public class SpaceCreationManager : MonoBehaviour
         m_TotalCreatePower = count;
 
         m_Resource.Touch.SetTouchCreatePowerIncrease(m_TotalCreatePower 
-            * (ulong)(1 + m_Relic.m_Relics[2].m_Level));
+            * (ulong)(1 + m_Relic.m_Relics[2].m_Level)
+            * (ulong)(1 + m_Shop.m_ShopLevel[2]));
     }
     public void LevelUp(SpaceCreation _creation)
     {

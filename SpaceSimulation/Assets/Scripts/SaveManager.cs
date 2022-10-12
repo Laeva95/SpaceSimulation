@@ -17,6 +17,7 @@ public class SaveData
     public List<int> SCLevels = new List<int>();
     public List<int> PCLevels = new List<int>();
     public List<int> RelicLevels = new List<int>();
+    public List<int> ShopLevels = new List<int>();
 }
 public class SaveManager : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class SaveManager : MonoBehaviour
     PlanetCreationManager m_Planet;
     [SerializeField]
     RelicManager m_Relic;
+    [SerializeField]
+    ShopUpgrade m_Shop;
 
     [SerializeField]
     Text m_OfflineRewardText;
@@ -113,11 +116,13 @@ public class SaveManager : MonoBehaviour
         {
             saveData.RelicLevels.Add(m_Relic.m_RelicLevels[i]);
         }
+        for (int i = 0; i < m_Shop.m_ShopLevel.Length; i++)
+        {
+            saveData.ShopLevels.Add(m_Shop.m_ShopLevel[i]);
+        }
         saveData.dataTime = SetLastPlayDate();
 
         string json = JsonUtility.ToJson(saveData);
-
-        SetLastPlayDate();
 
         File.WriteAllText(SAVE_DATA_DIRECTORY + SAVE_FILENAME, json);
     }
@@ -137,23 +142,27 @@ public class SaveManager : MonoBehaviour
             m_Resource.DivinityPower = loadData.dp;
             m_Resource.RebirthPoint = loadData.rp;
             m_Resource.TotalCP = loadData.totalcp;
-            for (int i = 0; i < m_Space.m_SpaceCreations.Length; i++)
+            for (int i = 0; i < loadData.SCLevels.Count; i++)
             {
                 if (loadData.SCLevels[i] != 0)
                 {
                     m_Space.m_Levels[i] = loadData.SCLevels[i];
                 }
             }
-            for (int i = 0; i < m_Planet.m_PlanetCreations.Length; i++)
+            for (int i = 0; i < loadData.PCLevels.Count; i++)
             {
                 if (loadData.PCLevels[i] != 0)
                 {
                     m_Planet.m_Levels[i] = loadData.PCLevels[i];
                 }
             }
-            for (int i = 0; i < m_Relic.m_RelicLevels.Length; i++)
+            for (int i = 0; i < loadData.RelicLevels.Count; i++)
             {
                 m_Relic.m_RelicLevels[i] = loadData.RelicLevels[i];
+            }
+            for (int i = 0; i < loadData.ShopLevels.Count; i++)
+            {
+                m_Shop.m_ShopLevel[i] = loadData.ShopLevels[i];
             }
 
             m_Resource.UpdateText();
@@ -181,13 +190,16 @@ public class SaveManager : MonoBehaviour
     #endregion
     IEnumerator TimeAfterLoadData()
     {
-        yield return new WaitForSeconds(1f);
-        m_OfflineRewardSet.SetActive(true);
-        m_Resource.CreatePower += (ulong)m_LastDateTime * CPCal();
-        m_Resource.DivinityPower += (ulong)m_LastDateTime * DPCal();
+        yield return new WaitForSeconds(0.5f);
+        if ((ulong)m_LastDateTime * CPCal() > 0 || (ulong)m_LastDateTime * DPCal() > 0)
+        {
+            m_Resource.CreatePower += (ulong)m_LastDateTime * CPCal();
+            m_Resource.DivinityPower += (ulong)m_LastDateTime * DPCal();
+            m_OfflineRewardSet.SetActive(true);
 
-        m_OfflineRewardText.text = 
-            $"Gained {Utils.Caculation(CPCal() * (ulong)m_LastDateTime)} CP and {Utils.Caculation(DPCal() * (ulong)m_LastDateTime)} DP while {TimeCal()}.";
+            m_OfflineRewardText.text =
+                $"Gained {Utils.Caculation(CPCal() * (ulong)m_LastDateTime)} CP and {Utils.Caculation(DPCal() * (ulong)m_LastDateTime)} DP while {TimeCal()}.";
+        }
     }
     #region CP, DP ¿¬»ê
     ulong CPCal()
