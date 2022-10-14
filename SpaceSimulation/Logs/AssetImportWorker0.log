@@ -15,11 +15,11 @@ E:/2020.3.20f1/SpaceSimulation/SpaceSimulation/SpaceSimulation
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-62154
+57671
 Successfully changed project path to: E:/2020.3.20f1/SpaceSimulation/SpaceSimulation/SpaceSimulation
 E:/2020.3.20f1/SpaceSimulation/SpaceSimulation/SpaceSimulation
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 269.84 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 164.10 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.20f1 (41c4e627c95f)
 [Subsystems] Discovering subsystems at path E:/2020.3.20f1/Editor/Data/Resources/UnitySubsystems

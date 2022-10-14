@@ -6098,10 +6098,14 @@ MonoBehaviour:
   - {fileID: 33172290}
   - {fileID: 1628385639}
   - {fileID: 1731657486}
+  m_CPADBtn: {fileID: 185443004}
+  m_DPADBtn: {fileID: 910627056}
   m_Relic: {fileID: 1858736369}
   m_Resource: {fileID: 1227265433}
   m_Space: {fileID: 1553282285}
   m_Planet: {fileID: 2113777924}
+  m_CPADTimer: 0
+  m_DPADTimer: 0
   m_ShopLevel: 
   m_ShopEffects: 
 --- !u!4 &258789158

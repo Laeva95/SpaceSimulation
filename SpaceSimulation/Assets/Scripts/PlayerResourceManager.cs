@@ -28,6 +28,7 @@ public class PlayerResourceManager : MonoBehaviour
         Touch = new TouchManager(this);
         m_UI = FindObjectOfType<UIBtnManager>();
         m_Shop = FindObjectOfType<ShopUpgrade>();
+        SetResolution();
     }
     public void UpdateText()
     {

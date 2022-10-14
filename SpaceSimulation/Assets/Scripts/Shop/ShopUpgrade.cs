@@ -10,6 +10,8 @@ public class ShopUpgrade : MonoBehaviour
     [SerializeField]
     Text[] m_CostText, m_LevelText, m_DescriptText;
     [SerializeField]
+    Button m_CPADBtn, m_DPADBtn;
+    [SerializeField]
     RelicManager m_Relic;
     [SerializeField]
     PlayerResourceManager m_Resource;
@@ -18,9 +20,11 @@ public class ShopUpgrade : MonoBehaviour
     [SerializeField]
     PlanetCreationManager m_Planet;
 
-
+    public int m_CPADTimer;
+    public int m_DPADTimer;
     public int[] m_ShopLevel;
     public int[] m_ShopEffects;
+    WaitForSeconds Sec = new WaitForSeconds(1f);
 
     private void Awake()
     {
@@ -30,14 +34,43 @@ public class ShopUpgrade : MonoBehaviour
     private void Start()
     {
         UpdateText();
+        StartCoroutine(ADTimer());
     }
-
+    IEnumerator ADTimer()
+    {
+        while (true)
+        {
+            if (m_CPADTimer > 0)
+            {
+                m_CPADTimer--;
+                m_CPADCost.text = m_CPADTimer.ToString() + " Sec";
+                m_CPADBtn.interactable = false;
+            }
+            else
+            {
+                m_CPADCost.text = "Rewarded AD";
+                m_CPADBtn.interactable = true;
+            }
+            if (m_DPADTimer > 0)
+            {
+                m_DPADTimer--;
+                m_DPADCost.text = m_DPADTimer.ToString() + " Sec";
+                m_DPADBtn.interactable = false;
+            }
+            else
+            {
+                m_DPADCost.text = "Rewarded AD";
+                m_DPADBtn.interactable = true;
+            }
+            yield return Sec;
+        }
+    }
     public void UpdateText()
     {
         m_CPAD.text = $"Watch ads and get " +
-            $"{Utils.Caculation(m_Space.m_TotalCreatePower * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2)) * 1800)} CP as a reward";
+            $"{Utils.Caculation(m_Space.m_TotalCreatePower * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2)) * (ulong)(1 + m_ShopLevel[0]) * 1800)} CP as a reward";
         m_DPAD.text = $"Watch ads and get " +
-            $"{Utils.Caculation(m_Planet.m_TotalDivinityPower * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2)) * 1800)} DP as a reward";
+            $"{Utils.Caculation(m_Planet.m_TotalDivinityPower * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2)) * (ulong)(1 + m_ShopLevel[1]) * 1800)} DP as a reward";
         for (int i = 0; i < m_ShopLevel.Length; i++)
         {
             m_CostText[i].text = $"{ Utils.Caculation((ulong)(1 + m_ShopLevel[i]) * 10)} RP";
@@ -68,11 +101,31 @@ public class ShopUpgrade : MonoBehaviour
 
     public void CPAD()
     {
-
+        if (m_CPADTimer > 0)
+        {
+            return;
+        }
+        m_Resource.CreatePower += 
+            m_Space.m_TotalCreatePower 
+            * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2)) 
+            * (ulong)(1 + m_ShopLevel[0]) * 1800;
+        m_Resource.TotalCP +=
+            m_Space.m_TotalCreatePower
+            * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2))
+            * (ulong)(1 + m_ShopLevel[0]) * 1800;
+        m_CPADTimer += 3600;
     }
     public void DPAD()
     {
-
+        if (m_DPADTimer > 0)
+        {
+            return;
+        }
+        m_Resource.DivinityPower +=
+            m_Planet.m_TotalDivinityPower 
+            * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2)) 
+            * (ulong)(1 + m_ShopLevel[1]) * 1800;
+        m_DPADTimer += 3600;
     }
     public void UpgradeBtn0()
     {

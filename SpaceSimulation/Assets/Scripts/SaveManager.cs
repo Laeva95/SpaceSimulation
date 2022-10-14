@@ -14,10 +14,14 @@ public class SaveData
     public ulong rp;
     public ulong totalcp;
     public string dataTime;
+
     public List<int> SCLevels = new List<int>();
     public List<int> PCLevels = new List<int>();
     public List<int> RelicLevels = new List<int>();
     public List<int> ShopLevels = new List<int>();
+
+    public int cpadTime;
+    public int dpadTime;
 }
 public class SaveManager : MonoBehaviour
 {
@@ -104,6 +108,8 @@ public class SaveManager : MonoBehaviour
         saveData.dp = m_Resource.DivinityPower;
         saveData.rp = m_Resource.RebirthPoint;
         saveData.totalcp = m_Resource.TotalCP;
+        saveData.cpadTime = m_Shop.m_CPADTimer;
+        saveData.dpadTime = m_Shop.m_DPADTimer;
         for (int i = 0; i < m_Space.m_SpaceCreations.Length; i++)
         {
             saveData.SCLevels.Add(m_Space.m_SpaceCreations[i].m_Level);
@@ -168,11 +174,12 @@ public class SaveManager : MonoBehaviour
             m_Resource.UpdateText();
 
             m_LastDateTime = (int)DateTime.Now.Subtract(GetLastPlayDate(loadData.dataTime)).TotalSeconds;
-            Debug.Log(m_LastDateTime);
             if (m_LastDateTime > 86400)
             {
                 m_LastDateTime = 86400;
             }
+            m_Shop.m_CPADTimer = loadData.cpadTime - (int)m_LastDateTime < 0 ? 0 : (int)(loadData.cpadTime - m_LastDateTime);
+            m_Shop.m_DPADTimer = loadData.dpadTime - (int)m_LastDateTime < 0 ? 0 : (int)(loadData.dpadTime - m_LastDateTime);
 
             if (m_LastDateTime > 0)
             {
