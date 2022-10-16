@@ -22,6 +22,8 @@ public class ShopUpgrade : MonoBehaviour
 
     public int m_CPADTimer;
     public int m_DPADTimer;
+    public bool m_IsCPAD = true;
+    public bool m_IsDPAD = true;
     public int[] m_ShopLevel;
     public int[] m_ShopEffects;
     WaitForSeconds Sec = new WaitForSeconds(1f);
@@ -42,23 +44,27 @@ public class ShopUpgrade : MonoBehaviour
         {
             if (m_CPADTimer > 0)
             {
+                m_IsCPAD = false;
                 m_CPADTimer--;
                 m_CPADCost.text = m_CPADTimer.ToString() + " Sec";
                 m_CPADBtn.interactable = false;
             }
             else
             {
+                m_IsCPAD = true;
                 m_CPADCost.text = "Rewarded AD";
                 m_CPADBtn.interactable = true;
             }
             if (m_DPADTimer > 0)
             {
+                m_IsDPAD = false;
                 m_DPADTimer--;
                 m_DPADCost.text = m_DPADTimer.ToString() + " Sec";
                 m_DPADBtn.interactable = false;
             }
             else
             {
+                m_IsDPAD = true;
                 m_DPADCost.text = "Rewarded AD";
                 m_DPADBtn.interactable = true;
             }

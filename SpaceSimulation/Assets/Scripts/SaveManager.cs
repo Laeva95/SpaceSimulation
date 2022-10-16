@@ -85,6 +85,11 @@ public class SaveManager : MonoBehaviour
         {
             StartCoroutine(GameQuit());
         }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            m_Shop.m_CPADTimer = 0;
+            m_Shop.m_DPADTimer = 0;
+        }
     }
     IEnumerator GameQuit()
     {

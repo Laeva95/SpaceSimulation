@@ -21,11 +21,15 @@ public class UIBtnManager : MonoBehaviour
     private GameObject m_UpSet, m_RebirthSet, m_BattleSet, m_ShopSet;
     int count = 1;
 
+    [SerializeField]
+    private Button m_Rebirth0, m_Rebirth1;
+
     private void Start()
     {
         SetSpaceUpText();
         SetPlanetUpText();
         m_Resource.UpdateText();
+        CheckPlanetActive();
     }
     #region 메인 버튼 Set
     public void SpacePlanetSwitchBtn()
@@ -224,6 +228,7 @@ public class UIBtnManager : MonoBehaviour
             m_Resource.CreatePower -= m_SpaceCreationManager.m_SpaceCreations[4].m_NextLevelCost;
             m_SpaceCreationManager.LevelUp(m_SpaceCreationManager.m_SpaceCreations[4]);
             SetSpaceUpText();
+            CheckPlanetActive();
         }
         else
         {
@@ -303,6 +308,18 @@ public class UIBtnManager : MonoBehaviour
         }
     }
 
+    private void CheckPlanetActive()
+    {
+
+        if (m_SpaceCreationManager.m_SpaceCreations[4].m_Level > 0)
+        {
+            m_Rebirth1.interactable = true;
+        }
+        else
+        {
+            m_Rebirth1.interactable = false;
+        }
+    }
     #endregion
     #region Planet 업그레이드 Set
     [SerializeField]
@@ -492,6 +509,7 @@ public class UIBtnManager : MonoBehaviour
         Switch(false);
         SetPlanetUpText();
         SetSpaceUpText();
+        CheckPlanetActive();
 
     }
     void GetRevirthReward(bool _isRewardedAD)
