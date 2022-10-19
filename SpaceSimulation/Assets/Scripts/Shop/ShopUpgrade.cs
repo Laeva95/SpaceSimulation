@@ -119,7 +119,7 @@ public class ShopUpgrade : MonoBehaviour
             m_Space.m_TotalCreatePower
             * (ulong)(1 + m_Relic.m_Relics[0].m_Level + (m_Relic.m_Relics[4].m_Level * 2))
             * (ulong)(1 + m_ShopLevel[0]) * 1800;
-        m_CPADTimer += 3600;
+        m_CPADTimer += 600;
     }
     public void DPAD()
     {
@@ -131,7 +131,7 @@ public class ShopUpgrade : MonoBehaviour
             m_Planet.m_TotalDivinityPower 
             * (ulong)(1 + m_Relic.m_Relics[1].m_Level + (m_Relic.m_Relics[5].m_Level * 2)) 
             * (ulong)(1 + m_ShopLevel[1]) * 1800;
-        m_DPADTimer += 3600;
+        m_DPADTimer += 600;
     }
     public void UpgradeBtn0()
     {
